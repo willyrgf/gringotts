@@ -1,5 +1,5 @@
 insert into
-  expenses (
+  gringotts.expenses (
     wallet,
     label,
     value,
@@ -38,7 +38,7 @@ values
   );
 
 insert into
-  expenses (
+  gringotts.expenses (
     wallet,
     label,
     value,

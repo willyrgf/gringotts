@@ -5,14 +5,18 @@ create database gringotts;
 -- connect to database
 \c gringotts;
 
+-- create schema
+drop schema if exists gringotts;
+create schema gringotts;
+
 -- create extension to uuid functions
 create extension if not exists "uuid-ossp";
 
 -- drop database if exists
-drop table if exists expenses;
+drop table if exists gringotts.expenses;
 
 -- create expenses table
-create table expenses (
+create table gringotts.expenses (
   id uuid default uuid_generate_v4(),
   wallet text not null default 'wr',
   label text default null,
@@ -33,4 +37,4 @@ create table expenses (
   primary key (id)
 );
 
-create index idx_created_at on expenses (created_at);
+create index idx_created_at on gringotts.expenses (created_at);
