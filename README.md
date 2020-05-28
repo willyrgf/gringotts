@@ -4,10 +4,11 @@ gringotts is a pure PLpgSQL application for personal or enterprise management fi
 
 ### INSTALLATION
 Requirement:
-- PostgreSQL >= 9.5;
-- postgresql-contrib package;
+- PostgreSQL >= 9.5
+- postgresql-contrib package
 
 ```sh
+# to install
 PGPASSWORD=postgrespass psql -Upostgresuser postgres < gringotts.sql
 ```
 
