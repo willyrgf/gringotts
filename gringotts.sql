@@ -6,7 +6,7 @@ create database gringotts;
 \c gringotts;
 
 -- create extension to uuid functions
-create if not exists extension "uuid-ossp";
+create extension if not exists "uuid-ossp";
 
 -- drop database if exists
 drop table if exists expenses;
@@ -32,3 +32,5 @@ create table expenses (
   created_at timestamp with time zone default now(),
   primary key (id)
 );
+
+create index idx_created_at on expenses (created_at);
