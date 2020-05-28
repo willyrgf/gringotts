@@ -37,4 +37,4 @@ create table gringotts.expenses (
   primary key (id)
 );
 
-create index idx_created_at on gringotts.expenses (created_at);
+create index idx_created_at on gringotts.expenses (created_at desc);
