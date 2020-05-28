@@ -1,14 +1,18 @@
+-- create database
+drop database if exists gringotts;
+create database gringotts;
+
+-- connect to database
+\c gringotts;
+
 -- create extension to uuid functions
 create extension "uuid-ossp";
 
--- create database
-create database gringotts;
-
 -- drop database if exists
-drop table if exists gringotts.expenses;
+drop table if exists expenses;
 
 -- create expenses table
-create table gringotts.expenses (
+create table expenses (
   id uuid default uuid_generate_v4(),
   wallet text not null default 'wr',
   label text default null,
@@ -16,7 +20,7 @@ create table gringotts.expenses (
   type text default 'not_essential',
   category text default null,
   billing_source text default 'direct_invoice',
-  reponsible text default 'wr',
+  responsible text default 'wr',
   is_essential boolean default false,
   is_fixed boolean default false,
   installment numeric default 0,
