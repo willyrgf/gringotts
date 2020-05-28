@@ -6,7 +6,7 @@ create database gringotts;
 \c gringotts;
 
 -- create extension to uuid functions
-create extension "uuid-ossp";
+create if not exists extension "uuid-ossp";
 
 -- drop database if exists
 drop table if exists expenses;
