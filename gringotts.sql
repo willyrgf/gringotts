@@ -1,5 +1,14 @@
-drop table if exists expenses;
-create table expenses (
+-- create extension to uuid functions
+create extension "uuid-ossp";
+
+-- create database
+create database gringotts;
+
+-- drop database if exists
+drop table if exists gringotts.expenses;
+
+-- create expenses table
+create table gringotts.expenses (
   id uuid default uuid_generate_v4(),
   wallet text not null default 'wr',
   label text default null,
