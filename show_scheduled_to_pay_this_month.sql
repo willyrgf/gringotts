@@ -3,10 +3,11 @@ select
 from
   gringotts.expenses
 where
-  is_paid = false
-  and schedule_to_pay_at < date_trunc('month',(now()+'1 month'::interval))
+  true
+  and is_paid = false
+  and schedule_to_pay_at > date_trunc('month',(now()))
 order by
-  created_at desc
+  created_at desc;
 
 -- update
 --   gringotts.expenses
