@@ -40,6 +40,7 @@ insert into
       gringotts.expenses
     where
       total_installments > installment
+      and schedule_to_pay_at >= date_trunc('month',(now()-'1 month'::interval))
       and schedule_to_pay_at < date_trunc('month',(now()))
   );
 
@@ -86,5 +87,8 @@ insert into
     where
       is_fixed
       and total_installments = 0
+      and schedule_to_pay_at >= date_trunc('month',(now()-'1 month'::interval))
       and schedule_to_pay_at < date_trunc('month',(now()))
   );
+
+
