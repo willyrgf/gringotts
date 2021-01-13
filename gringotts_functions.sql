@@ -120,23 +120,23 @@ begin
 
     -- insert all expenses with installment valid to this month
     insert into
-    gringotts.expenses (
-        wallet,
-        label,
-        value,
-        type,
-        category,
-        is_essential,
-        is_fixed,
-        billing_source,
-        installment,
-        total_installments,
-        interest,
-        fines,
-        is_paid,
-        schedule_to_pay_at,
-        created_at,
-        responsible
+        gringotts.expenses (
+            wallet,
+            label,
+            value,
+            type,
+            category,
+            is_essential,
+            is_fixed,
+            billing_source,
+            installment,
+            total_installments,
+            interest,
+            fines,
+            is_paid,
+            schedule_to_pay_at,
+            created_at,
+            responsible
     )
     (
         select
@@ -191,23 +191,23 @@ begin
 
     -- insert all fixed expenses valid to the this month
     insert into
-    gringotts.expenses (
-        wallet,
-        label,
-        value,
-        type,
-        category,
-        is_essential,
-        is_fixed,
-        billing_source,
-        installment,
-        total_installments,
-        interest,
-        fines,
-        is_paid,
-        schedule_to_pay_at,
-        created_at,
-        responsible
+        gringotts.expenses (
+            wallet,
+            label,
+            value,
+            type,
+            category,
+            is_essential,
+            is_fixed,
+            billing_source,
+            installment,
+            total_installments,
+            interest,
+            fines,
+            is_paid,
+            schedule_to_pay_at,
+            created_at,
+            responsible
     )
     (
         select
@@ -258,7 +258,6 @@ begin
                     and e2.responsible = e.responsible
             )
     );
-
 
 end;
 $$;
