@@ -1,12 +1,12 @@
 /*
 The function show_scheduled_expenses, show all expenses 
 between two dates, with the default:
-from_date: start of the current month
-to_date: end of the current month
+v_from_date: start of the current month
+v_to_date: end of the current month
  */
 create or replace function gringotts.show_scheduled_expenses (
-    from_date timestamp default date_trunc('month', (now())),
-    to_date timestamp default date_trunc('month', (now()+'1 month'::interval))
+    v_from_date timestamp default date_trunc('month', (now())),
+    v_to_date timestamp default date_trunc('month', (now()+'1 month'::interval))
 )
 returns table (
     id uuid,
@@ -53,8 +53,8 @@ begin
             gringotts.expenses e
         where
             true
-            and e.schedule_to_pay_at >= from_date
-            and e.schedule_to_pay_at < to_date
+            and e.schedule_to_pay_at >= v_from_date
+            and e.schedule_to_pay_at < v_to_date
         order by
             e.schedule_to_pay_at asc
     );
@@ -65,12 +65,12 @@ $$;
 /*
 The function show_scheduled_expenses_to_pay, show all expenses not paid
 between two dates, with the default:
-from_date: start of the current month
-to_date: end of the current month
+v_from_date: start of the current month
+v_to_date: end of the current month
  */
 create or replace function gringotts.show_scheduled_expenses_to_pay (
-    from_date timestamp default date_trunc('month', (now())),
-    to_date timestamp default date_trunc('month', (now()+'1 month'::interval))
+    v_from_date timestamp default date_trunc('month', (now())),
+    v_to_date timestamp default date_trunc('month', (now()+'1 month'::interval))
 )
 returns table (
     id uuid,
@@ -98,7 +98,7 @@ begin
         select
             e.*
         from
-            gringotts.show_scheduled_expenses(from_date, to_date) e
+            gringotts.show_scheduled_expenses(v_from_date, v_to_date) e
         where
             true
             and e.is_paid = false
