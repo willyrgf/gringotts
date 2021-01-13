@@ -262,3 +262,78 @@ begin
 end;
 $$;
 
+
+
+/*
+The function create_expense create a expense pass all informations about
+that, with the defaults:
+ */
+create or replace function gringotts.create_expense(
+    v_id uuid default uuid_generate_v4(),
+    v_wallet text default 'example',
+    v_label text default 'label_example',
+    v_value numeric default 0,
+    v_type text default 'type_example',
+    v_category text default 'category_example',
+    v_billing_source text default 'billing_source_example',
+    v_responsible text default 'responsible_example',
+    v_is_essential boolean default false,
+    v_is_fixed boolean default false,
+    v_installment numeric default 0,
+    v_total_installments numeric default 0,
+    v_interest numeric default 0,
+    v_fines numeric default 0,
+    v_is_paid boolean default false,
+    v_schedule_to_pay_at timestamp with time zone default now(),
+    v_created_at timestamp with time zone default now(),
+    out v_return uuid
+)
+returns uuid
+language plpgsql
+as $$
+begin
+    insert into
+        gringotts.expenses (
+            id,
+            wallet,
+            label,
+            value,
+            type,
+            category,
+            is_essential,
+            is_fixed,
+            billing_source,
+            responsible,
+            installment,
+            total_installments,
+            interest,
+            fines,
+            is_paid,
+            schedule_to_pay_at,
+            created_at
+    )
+    values
+    (
+        v_id,
+        v_wallet,
+        v_label,
+        v_value,
+        v_type,
+        v_category,
+        v_is_essential,
+        v_is_fixed,
+        v_billing_source,
+        v_responsible,
+        v_installment,
+        v_total_installments,
+        v_interest,
+        v_fines,
+        v_is_paid,
+        v_schedule_to_pay_at,
+        v_created_at
+    )
+    returning id into v_return;
+end;
+$$;
+
+
