@@ -45,7 +45,7 @@ select
     v_interest => 0,
     v_fines => 0,
     v_is_paid => false,
-    v_schedule_to_pay_at => '2021-01-15'::timestamp
+    v_schedule_to_pay_at => '2021-01-15'
   );
 ```
 
