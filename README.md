@@ -9,7 +9,7 @@ gringotts is a pure PLpgSQL application for personal or enterprise financial man
 - postgresql-contrib package
 
 #### Download and install 
-```
+```sh
 # download
 git clone https://github.com/willyrgf/gringotts
 cd gringotts
@@ -26,6 +26,9 @@ PGPASSWORD=postgrespass psql -Upostgresuser postgres < gringotts_functions.sql
 
 #### Create a expense
 ```sql
+# create a new expenses according the arguments passed,
+# all arguments can be ommited and we will use the default:
+# (https://github.com/willyrgf/gringotts/blob/42a855fcb0459d139894736319d12b010e57a030/gringotts_functions.sql#L271)
 select
   gringotts.create_expense(
     v_wallet => 'wr',
