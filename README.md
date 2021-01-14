@@ -91,6 +91,6 @@ select gringotts.start_new_month();
 #### TODO
 - create unique indexes to do not repeat any expense
 - add currency on the expense table
-- move to a migration system (using (goose)[https://github.com/pressly/goose], maybe)
+- move to a migration system (using [goose](https://github.com/pressly/goose), maybe)
 
 
