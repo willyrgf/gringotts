@@ -95,5 +95,6 @@ select gringotts.start_new_month();
 - create unique indexes to do not repeat any expense
 - add currency on the expense table
 - move to a migration system (using [goose](https://github.com/pressly/goose), maybe)
-
+- add a function to copy the last expenses from label and fill with the new values
+- adjust the gringotts.show_scheduled_expenses_to_pay to get all expenses to pay independent of the date and sort by the oldest schedule_to_pay_at
 
