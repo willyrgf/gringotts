@@ -88,8 +88,8 @@ from
 
 #### Start a new month
 ```sql
-# brings all installmen and fixed expenses for the current month 
-# this function valid repeated expenses and don't insert if then exist
+-- brings all installmen and fixed expenses for the current month 
+-- this function valid repeated expenses and don't insert if then exist
 select gringotts.start_new_month();
 ```
 
