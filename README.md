@@ -26,9 +26,11 @@ PGPASSWORD=postgrespass psql -Upostgresuser postgres < gringotts_functions.sql
 
 #### Create a expense
 ```sql
-# create a new expenses according the arguments passed,
-# all arguments can be ommited and we will use the default:
-# (https://github.com/willyrgf/gringotts/blob/42a855fcb0459d139894736319d12b010e57a030/gringotts_functions.sql#L271)
+/*
+create a new expenses according the arguments passed,
+all arguments can be ommited and we will use the default:
+(https://github.com/willyrgf/gringotts/blob/42a855fcb0459d139894736319d12b010e57a030/gringotts_functions.sql#L271)
+*/
 select
   gringotts.create_expense(
     v_wallet => 'wr',
@@ -51,36 +53,36 @@ select
 
 #### Show expenses
 ```sql
-# show all expenses to pay (not paid yet) in the current month
+-- show all expenses to pay (not paid yet) in the current month
 select
   *
 from
   gringotts.show_scheduled_expenses_to_pay();
 
-# show all expenses to pay (not paid yet) between two dates
+-- show all expenses to pay (not paid yet) between two dates
 select
   *
 from
   gringotts.show_scheduled_expenses_to_pay(
-    v_from_date = > '2021-01-01',
-    v_to_date = > '2021-01-15'
+    v_from_date => '2021-01-01',
+    v_to_date => '2021-01-15'
   );
 ```
 
 ```sql
-# show all expenses (paid or not) in the current month
+-- show all expenses (paid or not) in the current month
 select
   *
 from
   gringotts.show_scheduled_expenses();
 
-# show all expenses (paid or not) between two dates
+-- show all expenses (paid or not) between two dates
 select
   *
 from
   gringotts.show_scheduled_expenses(
-    v_from_date = > '2021-01-01',
-    v_to_date = > '2021-01-15'
+    v_from_date => '2021-01-01',
+    v_to_date => '2021-01-15'
   );
 ```
 
